@@ -7,7 +7,7 @@ function GetGridMaxSize(radius)
 end
 
 function GetPlayerGridZone()
-	local plyPos = GetEntityCoords(GLOBAL_PED, false)
+	local plyPos = GetEntityCoords(PlayerPedId(), false)
 	local sectorX = math.max(plyPos.x + 8192.0, 0.0) / zoneRadius
 	local sectorY = math.max(plyPos.y + 8192.0, 0.0) / zoneRadius
 	return math.ceil(sectorX + sectorY)
@@ -22,9 +22,9 @@ function StartVOIPGridThreads()
                 if newGrid ~= CURRENT_GRID then
                     --Logger:Trace('VOIP', ('Changing Grid Zone To %s From %s'):format(newGrid, CURRENT_GRID))
                     CURRENT_GRID = newGrid
-                    
+
                     MumbleClearVoiceTargetChannels(1)
-                    MumbleAddVoiceTargetChannel(CURRENT_GRID)
+                    MumbleAddVoiceTargetChannel(PlayerPedId(), CURRENT_GRID)
                     -- add nearby grids to voice targets
                     for nearbyGrids = CURRENT_GRID - 3, CURRENT_GRID + 3 do
                         MumbleAddVoiceTargetChannel(1, nearbyGrids)
@@ -35,7 +35,7 @@ function StartVOIPGridThreads()
                     Logger:Trace('VOIP', 'Channel Override Set to ' .. _customChannelOverride)
                     CURRENT_GRID = _customChannelOverride
                     MumbleClearVoiceTargetChannels(1)
-                    MumbleAddVoiceTargetChannel(CURRENT_GRID)
+                    MumbleAddVoiceTargetChannel(PlayerPedId(), CURRENT_GRID)
                 end
             end
             Wait(100)
