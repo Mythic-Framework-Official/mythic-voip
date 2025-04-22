@@ -116,8 +116,8 @@ function RadioKeyDown()
 				SetControlNormal(1, 249, 1.0)
 				SetControlNormal(2, 249, 1.0)
 
-				if not IsEntityPlayingAnim(GLOBAL_PED, 'random@arrests', 'generic_radio_chatter', 3) then
-					TaskPlayAnim(GLOBAL_PED, 'random@arrests', 'generic_radio_chatter', 8.0, 0.0, -1, 49, 0, false, false, false)
+				if not IsEntityPlayingAnim(PlayerPedId(), 'random@arrests', 'generic_radio_chatter', 3) then
+					TaskPlayAnim(PlayerPedId(), 'random@arrests', 'generic_radio_chatter', 8.0, 0.0, -1, 49, 0, false, false, false)
 				end
 			end
 

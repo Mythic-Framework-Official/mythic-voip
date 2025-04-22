@@ -125,13 +125,6 @@ AddEventHandler("Characters:Client:Spawn", function()
 
 	CreateThread(function()
 		while _characterLoaded do
-			GLOBAL_PED = PlayerPedId()
-			Wait(5000)
-		end
-	end)
-
-	CreateThread(function()
-		while _characterLoaded do
 			Wait(100)
 			local isTalking = NetworkIsPlayerTalking(PlayerId())
 			if isTalking and not PLAYER_TALKING then

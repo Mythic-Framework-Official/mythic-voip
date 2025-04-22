@@ -1,7 +1,7 @@
 RegisterNetEvent('VOIP:Phone:Client:SyncCallData', function(callTable, channel)
 	CALL_DATA = callTable
 	for tgt, enabled in pairs(CALL_DATA) do
-		if tgt ~= playerServerId then
+		if tgt ~= PLAYER_SERVER_ID then
 			VOIP:ToggleVoice(tgt, enabled, 'phone')
 		end
 	end
